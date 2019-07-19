@@ -1,14 +1,14 @@
-const { RESTDataSource } = require('apollo-datasource-rest');
+import { RESTDataSource } from 'apollo-datasource-rest';
 
-class UserAPI extends RESTDataSource {
+export default class UserAPI extends RESTDataSource {
     
     constructor(){
         super();
         this.baseUrl = "http://localhost:8080/api"
     }
 
-    async getAllUser(options) {
-        const users = await this.get("users",null, this.context.customHeaders);
+    async getAllUser() {
+       const users = await this.get("users",null, this.context.customHeaders);
         Array.isArray(users) ? 
         users.map( user => this.userReducer(user)) : [];
     }
@@ -25,5 +25,3 @@ class UserAPI extends RESTDataSource {
         }
     }
 }
-
-module.exports = UserAPI;

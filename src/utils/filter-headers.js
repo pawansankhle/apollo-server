@@ -1,5 +1,5 @@
 
-function filterHeaders(headers, nameList) {
+const filterHeaders = (headers, nameList) => {
     return nameList
       .map(name => name.toLowerCase())
       .reduce((acc, name) => ({
@@ -9,4 +9,4 @@ function filterHeaders(headers, nameList) {
       .filter(Boolean);
 }
 
-module.exports = filterHeaders;
+export default filterHeaders;

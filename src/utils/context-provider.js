@@ -1,12 +1,13 @@
 
-const filterHeaders =  require('./filter-headers');
+import filterHeaders  from './filter-headers';
 
-function contextProvider({ req }) {
+const contextProvider = ({ req })  => {
+  
   return {
             req,
             customHeaders: {
               headers: {
-                ...filterHeaders(req.headers, ['authorization', 'x-level' ]),
+                ...filterHeaders(req.headers, ['authorization', 'connection' ]),
                 credentials: 'same-origin',
                 'Content-Type': 'application/json',
               },
@@ -14,4 +15,4 @@ function contextProvider({ req }) {
           }
 }
 
-module.exports = contextProvider;
+export default contextProvider;
